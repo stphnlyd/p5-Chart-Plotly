@@ -8,7 +8,7 @@ use Chart::Plotly;
 use Chart::Plotly::Plot;
 use Chart::Plotly::Trace::Ohlc;
 
-use JSON;
+use JSON::MaybeXS;
 use DateTime;
 use DateTimeX::TO_JSON;
 
@@ -20,7 +20,7 @@ my $content = get_bitcoin_data();
 my $ohlc = Chart::Plotly::Trace::Ohlc->new(%$content);
 
 my $plot = Chart::Plotly::Plot->new( traces => [$ohlc],
-                                     layout => { xaxis => { rangeslider => { visible => JSON::true } } } );
+                                     layout => { xaxis => { rangeslider => { visible => JSON::MaybeXS::true } } } );
 
 Chart::Plotly::show_plot($plot);
 
@@ -31,7 +31,7 @@ my $candlestick = Chart::Plotly::Trace::Candlestick->new(%$content);
 my $plot_with_grid = Chart::Plotly::Plot->new(
     traces => [$candlestick],
     layout => {
-        xaxis => { rangeslider => { visible => JSON::false },
+        xaxis => { rangeslider => { visible => JSON::MaybeXS::false },
                    gridcolor   => '#000',
                    gridwidth   => 1
         },

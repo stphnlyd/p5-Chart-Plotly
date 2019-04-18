@@ -8,13 +8,13 @@ use Getopt::Long::Descriptive;
 use Const::Fast;
 use Path::Tiny;
 use Text::Template;
-use JSON;
+use JSON::MaybeXS;
 use Cwd;
 use Data::Dump;
 use Scalar::Util;
 
 # TODO Use enum names
-# TODO Use enums with JSON::false and JSON::true and number
+# TODO Use enums with JSON::MaybeXS::false and JSON::MaybeXS::true and number
 # TODO Types: color, subplotid, angle, colorscale
 # TODO Add defaults?
 # TODO Add support for items

@@ -6,13 +6,13 @@ my $violin1 = Chart::Plotly::Trace::Violin->new(
     x    => $x,
     y    => [ map {rand()} (1 .. (scalar(@$x))) ],
     name => "Violin1",
-    box  => { visible => JSON::true }
+    box  => { visible => JSON::MaybeXS::true }
 );
 my $violin2 = Chart::Plotly::Trace::Violin->new(
     x    => $x,
     y    => [ map {rand()} (1 .. (scalar(@$x))) ],
     name => "Violin2",
-    box  => { visible => JSON::true }
+    box  => { visible => JSON::MaybeXS::true }
 );
 my $violin_plot = Chart::Plotly::Plot->new(traces => [ $violin1, $violin2 ], layout => { violinmode => 'group' });
 

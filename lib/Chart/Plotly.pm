@@ -8,7 +8,7 @@ use Exporter 'import';
 use vars qw(@EXPORT_OK);
 @EXPORT_OK = qw(show_plot);
 
-use JSON;
+use JSON::MaybeXS;
 use Params::Validate qw(:all);
 use Text::Template;
 use Module::Load;
@@ -165,7 +165,7 @@ return Text::Template::fill_in_string( $template, HASH => $template_variables );
 
 sub _process_data {
 my $data           = shift;
-my $json_formatter = JSON->new->allow_blessed(1)->convert_blessed(1);
+my $json_formatter = JSON::MaybeXS->new->allow_blessed(1)->convert_blessed(1);
 local *PDL::TO_JSON = sub { $_[0]->unpdl };
 if ( Ref::Util::is_blessed_ref($data) ) {
     my $adapter_name = 'Chart::Plotly::Adapter::' . ref $data;
